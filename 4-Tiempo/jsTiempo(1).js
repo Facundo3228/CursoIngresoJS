@@ -1,3 +1,10 @@
+/**
+ * Enunciado:
+ * Bienvenidos.
+ * al presionar el botón INICIAR se debe mostrar un mensaje de bienvenida: "Bienvenidos a la UTN FRA"
+ * cada 3 segundos.
+ */
+
 var miIntervalo ;
 
 function inicio()

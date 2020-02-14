@@ -11,16 +11,18 @@ E.	Si el importe final con descuento suma más de $120  se debe sumar un 10% de 
 function CalcularPrecio () 
 {
     //Variables
-    var cantidadLamparaIngresada;
-    var cantidadLamparaParseo;
-    var precioLampara;
-    var descuento;
-    var IIBB;
-    var totalConDescuento;
-    var totalDescuento;
+    var cantidadLamparaIngresada; //valor ingresado String
+    var cantidadLamparaParseo; //valor parseado de la variable cantidadLamparaIngresada.
+    var precioLampara; //valor fijo de cada lampara.
+    var descuento; //descuento fijo por lampara.
+    var IIBB; //valor fijo de ingresos brutos.
+    var totalConDescuento; //valor resultante de la resta del total de las lamparas 
+    var totalDescuentoLamparas; //valor del descuento del total de las lamparas por el descuento.
     var totalConIIBB;
+    var totalSumaIIBB; //valor de decuento de
     var totalFinal;
-    var totalLamparas;
+    var totalLamparas; //valor total de la suma de lamparas por  el valor de cada una.
+
     var mensaje;
     var marcaLampara;
 
@@ -60,30 +62,28 @@ function CalcularPrecio ()
                     } else {
                         descuento = 5;
                         //Si es 2 o 1
-                        if (cantidadLamparaParseo >= 2) {
-                            totalFinal = precioLampara * cantidadLamparaParseo;
+                        if (cantidadLamparaParseo <= 2) {
+                            totalLamparas = precioLampara * cantidadLamparaParseo;
                         }
                     }
                 }
             }
-        }
-        
-        
+        }        
     }
 
     //calculos
     totalLamparas = precioLampara * cantidadLamparaParseo; //total de las lamparas compradas a valor de $35
-    totalDescuento = (totalLamparas * descuento) / 100; //total del porcentaje de descuento del total de lamparas
-    totalConDescuento = totalLamparas - totalDescuento; //total del descuento 
-    document.getElementById("precioDescuento").value = totalConDescuento;
+    totalDescuentoLamparas = (totalLamparas * descuento) / 100; //total del porcentaje de descuento del total de lamparas
+    totalConDescuento = totalLamparas - totalDescuentoLamparas; //total del descuento 
+    //document.getElementById("precioDescuento").value = totalConDescuento; // muestro el total con descuento
 
     if (totalConDescuento >= 120) {
-        totalConIIBB = (totalConDescuento * IIBB) / 100;
+        totalDescuentoIIBB = (totalConDescuento * IIBB) / 100; //total del porcentaje de descuento del total con descuento de las lamparas.
         totalFinal = totalConIIBB + totalConDescuento;
     }
 
     //muestro datos
-    //document.getElementById("precioDescuento").value = totalConDescuento
-    document.getElementById("precioDescuento").value = totalFinal;
- 	
+    document.getElementById("precioDescuento").value = totalConDescuento
+    //document.getElementById("precioDescuento").value = totalFinal;
+ 	alert("Usted pago de IIBB " + )
 }

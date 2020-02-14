@@ -34,6 +34,6 @@ function mostrar()
         break;
     }//fin del swich
 
-//Nota personal: Presta atencion a los nombres de los datos.
+    //Nota personal: Presta atencion a los nombres de los datos.
 
 }//FIN DE LA FUNCIÓN
