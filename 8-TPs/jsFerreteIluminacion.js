@@ -10,5 +10,80 @@ E.	Si el importe final con descuento suma más de $120  se debe sumar un 10% de 
  */
 function CalcularPrecio () 
 {
+    //Variables
+    var cantidadLamparaIngresada;
+    var cantidadLamparaParseo;
+    var precioLampara;
+    var descuento;
+    var IIBB;
+    var totalConDescuento;
+    var totalDescuento;
+    var totalConIIBB;
+    var totalFinal;
+    var totalLamparas;
+    var mensaje;
+    var marcaLampara;
+
+    //asignacion de variables
+    cantidadLamparaIngresada = document.getElementById("Cantidad").value;
+    precioLampara = 35; //modificar para que en el futuro el cliente pueda cambiar el precio.
+    marcaLampara = document.getElementById("Marca").value;
+    IIBB = 10;
+
+
+    //parseo
+    cantidadLamparaParseo = parseInt(cantidadLamparaIngresada);
+
+
+    //codigo if/else
+
+    //punto A
+    if (cantidadLamparaParseo >= 6) {
+        descuento = 50;
+    } else {
+        //punto B
+        if (cantidadLamparaParseo == 5 && marcaLampara == "ArgentinaLuz") {
+            descuento = 40;
+        } else {
+            descuento = 30;
+            //punto C
+            if (cantidadLamparaParseo == 4 && (marcaLampara == "ArgentinaLuz" || marcaLampara == "FelipeLamparas")) {
+                descuento = 25;
+            } else {
+                descuento = 20;
+                //punto D
+                if (cantidadLamparaParseo == 3 && marcaLampara == "ArgentinaLuz") {
+                    descuento = 15;
+                } else {
+                    if (cantidadLamparaParseo == 3 && marcaLampara == "FelipeLamparas") {
+                        descuento = 10;
+                    } else {
+                        descuento = 5;
+                        //Si es 2 o 1
+                        if (cantidadLamparaParseo >= 2) {
+                            totalFinal = precioLampara * cantidadLamparaParseo;
+                        }
+                    }
+                }
+            }
+        }
+        
+        
+    }
+
+    //calculos
+    totalLamparas = precioLampara * cantidadLamparaParseo; //total de las lamparas compradas a valor de $35
+    totalDescuento = (totalLamparas * descuento) / 100; //total del porcentaje de descuento del total de lamparas
+    totalConDescuento = totalLamparas - totalDescuento; //total del descuento 
+    document.getElementById("precioDescuento").value = totalConDescuento;
+
+    if (totalConDescuento >= 120) {
+        totalConIIBB = (totalConDescuento * IIBB) / 100;
+        totalFinal = totalConIIBB + totalConDescuento;
+    }
+
+    //muestro datos
+    //document.getElementById("precioDescuento").value = totalConDescuento
+    document.getElementById("precioDescuento").value = totalFinal;
  	
 }
