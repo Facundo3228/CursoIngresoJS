@@ -79,11 +79,13 @@ function CalcularPrecio ()
 
     if (totalConDescuento >= 120) {
         totalDescuentoIIBB = (totalConDescuento * IIBB) / 100; //total del porcentaje de descuento del total con descuento de las lamparas.
-        totalFinal = totalConIIBB + totalConDescuento;
+        totalFinal = totalConDescuento + totalDescuentoIIBB // total final del valor de la suma del ingreso bruto.
+        
     }
 
     //muestro datos
     document.getElementById("precioDescuento").value = totalConDescuento
     //document.getElementById("precioDescuento").value = totalFinal;
- 	alert("Usted pago de IIBB " + )
+     alert("Usted pago de IIBB " + totalDescuentoIIBB + " el valor total a pagar es: " + totalFinal);
+     document.getElementById("precioDescuento").value = totalFinal;
 }
