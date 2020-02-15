@@ -77,6 +77,7 @@ function CalcularPrecio ()
     totalConDescuento = totalLamparas - totalDescuentoLamparas; //total del descuento 
     //document.getElementById("precioDescuento").value = totalConDescuento; // muestro el total con descuento
 
+    //IF que evalua si el total de las lamparas con descuento es mayor a 120, calcula el porcentaje y le suma. 
     if (totalConDescuento >= 120) {
         totalDescuentoIIBB = (totalConDescuento * IIBB) / 100; //total del porcentaje de descuento del total con descuento de las lamparas.
         totalFinal = totalConDescuento + totalDescuentoIIBB // total final del valor de la suma del ingreso bruto.

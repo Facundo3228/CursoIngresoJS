@@ -37,6 +37,11 @@ function mostrar()
         }
     }
 
+    /**
+     * Nota personal: Estructurar correctamente la logica de los IF/ELSE.
+     * Modo de testeo con prueba de escritorio 7, 15 y 21.
+     */
+
     /*
     * Nota:por mas que funciona, estoy ejecuta 3 veces el codigo.
     */

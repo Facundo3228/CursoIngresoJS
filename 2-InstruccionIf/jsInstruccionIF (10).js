@@ -10,23 +10,24 @@ function mostrar()
 {
 	//variables
 	var numeroRandom;
-	var maximo;
-	var minimo;
+	//var maximo;
+	//var minimo;
 	var mensaje;
 
 	//inicialiso variables
-	maximo = 11;
-	minimo = 1;
+	//maximo = 11;
+	//minimo = 1;
 
 	//Genero el número RANDOM entre 1 y 10
-	numeroRandom = parseInt(Math.random() * (maximo - minimo)) + minimo;
+	//numeroRandom = parseInt(Math.random() * (maximo - minimo)) + minimo;
+	numeroRandom = Math.floor((Math.random() * 10) + 1);
 
 	//condicional if/else
-	if (numeroRandom >= 9) {
+	if (numeroRandom > 8) {
 		mensaje = "EXCELENTE";
 		alert(mensaje + " Su nota es: " + numeroRandom);
 	} else {
-		if (numeroRandom >= 4 && numeroRandom < 9) {
+		if (numeroRandom > 3 && numeroRandom < 9) {
 			mensaje = "APROBÒ";
 			alert(mensaje + " Su nota es: " + numeroRandom);
 		} else {
@@ -34,5 +35,10 @@ function mostrar()
 			alert(mensaje + " Su nota es: " + numeroRandom);
 		}
 	}
+
+	/**
+	 * Nota personal: el uso del ' >= o <= ' es causa de uso del procesador.
+	 * Analizar la logica de los extremos.
+	 */
 
 }//FIN DE LA FUNCIÓN
