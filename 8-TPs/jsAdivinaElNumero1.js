@@ -34,9 +34,7 @@ function verificar()
 {
 	//inicialiso variables
 	numeroIngresado = document.getElementById("numero").value;
-	//nota no se como incrementarlo.
-	//contadorIntentos = 1;
-	
+		
 	if (numeroIngresado == numeroSecreto) {
 		contadorIntentos++;
 		alert("Usted es un ganador!!! " + numeroSecreto + " y en solo " + contadorIntentos + " intentos.");
@@ -49,6 +47,7 @@ function verificar()
 			alert("el numero se encuentra entre 50 y 100");
 		}
 	}
+	//asigno lo que tenga contadorIntentos a contadorIntentos.
 	contadorIntentos = contadorIntentos;
 	document.getElementById("intentos").value = contadorIntentos;	
 }
