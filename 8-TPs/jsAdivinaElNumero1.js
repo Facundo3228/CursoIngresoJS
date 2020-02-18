@@ -10,20 +10,45 @@
 * del número secreto.
 */
 
-var numeroSecreto; 
-var contadorIntentos;
+//variables globales
+var numeroSecreto;
+var numeroIngresado; 
+var contadorIntentos = 0;
+var maximo;
+var minimo;
 
 function comenzar()
 {
-	//Genero el número RANDOM entre 1 y 100
-	 
-		//alert(numeroSecreto );
-	
+	//inicialiso variables
+	maximo = 101;
+	minimo = 1;
 
+	//Genero el número RANDOM entre 1 y 100
+	numeroSecreto = parseInt(Math.random() * (maximo - minimo)) + minimo;
+
+	//muestro el numero
+	alert("El numero secreto fue creado. " + numeroSecreto);
 }
 
 function verificar()
 {
+	//inicialiso variables
+	numeroIngresado = document.getElementById("numero").value;
+	//nota no se como incrementarlo.
+	//contadorIntentos = 1;
 	
-	
+	if (numeroIngresado == numeroSecreto) {
+		contadorIntentos++;
+		alert("Usted es un ganador!!! " + numeroSecreto + " y en solo " + contadorIntentos + " intentos.");
+		
+	} else {
+		contadorIntentos++;
+		if (numeroSecreto < 50) {
+			alert("el numero se encuentra entre 1 y 49");
+		} else {
+			alert("el numero se encuentra entre 50 y 100");
+		}
+	}
+	contadorIntentos = contadorIntentos;
+	document.getElementById("intentos").value = contadorIntentos;	
 }

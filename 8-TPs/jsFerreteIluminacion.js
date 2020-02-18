@@ -2,7 +2,7 @@
 Tomando en cuenta que todas las lámparas están en oferta al mismo precio de $35 pesos final.
 A.	Si compra 6 o más  lamparitas bajo consumo tiene un descuento del 50%. 
 B.	Si compra 5  lamparitas bajo consumo marca "ArgentinaLuz" se hace un descuento del 40 % y si es de otra marca el descuento es del 30%.
-C.	Si compra 4  lamparitas bajo consumo marca "ArgentinaLuz" o “FelipeLamparas” se hace un descuento del 25 % y si es de otra marca el descuento es del 20%.
+C.	Si compra 4  lamparitas bajo consumo marca "ArgentinaLuz" o "FelipeLamparas" se hace un descuento del 25 % y si es de otra marca el descuento es del 20%.
 D.	Si compra 3  lamparitas bajo consumo marca "ArgentinaLuz"  el descuento es del 15%, si es  “FelipeLamparas” se hace un descuento del 10 % y si es de otra marca un 5%.
 E.	Si el importe final con descuento suma más de $120  se debe sumar un 10% de ingresos brutos en informar del impuesto con el siguiente mensaje:
  ”Usted pago X de IIBB.”, siendo X el impuesto que se pagó. 
@@ -39,39 +39,41 @@ function CalcularPrecio ()
 
     //codigo if/else
 
-    //punto A
-    if (cantidadLamparaParseo >= 6) {
-        descuento = 50;
+    //Parte B
+    if (cantidadLamparaParseo == 5 && marcaLampara == "ArgentinaLuz") {
+        descuento = 40;
     } else {
-        //punto B
-        if (cantidadLamparaParseo == 5 && marcaLampara == "ArgentinaLuz") {
-            descuento = 40;
+        descuento = 30;
+
+        //Parte C
+        if (cantidadLamparaParseo == 4 && (marcaLampara == "ArgentinaLuz" || marcaLampara == "FelipeLamparas")) {
+            descuento = 25;
         } else {
-            descuento = 30;
-            //punto C
-            if (cantidadLamparaParseo == 4 && (marcaLampara == "ArgentinaLuz" || marcaLampara == "FelipeLamparas")) {
-                descuento = 25;
+            descuento = 20;
+            
+            //Parte D
+            if (cantidadLamparaParseo == 3 && marcaLampara == "ArgentinaLuz") {
+                descuento = 15;
             } else {
-                descuento = 20;
-                //punto D
-                if (cantidadLamparaParseo == 3 && marcaLampara == "ArgentinaLuz") {
-                    descuento = 15;
+                if (cantidadLamparaParseo == 3 && marcaLampara == "FelipeLamparas") {
+                    descuento = 10;
                 } else {
-                    if (cantidadLamparaParseo == 3 && marcaLampara == "FelipeLamparas") {
-                        descuento = 10;
+                    descuento = 5;
+
+                    //Parte si compra menos de dos.
+                    if (cantidadLamparaParseo < 3) {
+                        descuento = 0;
                     } else {
-                        descuento = 5;
-                        //Si es 2 o 1
-                        if (cantidadLamparaParseo <= 2) {
-                            totalLamparas = precioLampara * cantidadLamparaParseo;
-                        }
+                        //Parte A
+                        descuento = 50;
                     }
                 }
             }
-        }        
+        }
     }
 
     //calculos
+    document.getElementById("precioDescuento").value = totalLamparas;
     totalLamparas = precioLampara * cantidadLamparaParseo; //total de las lamparas compradas a valor de $35
     totalDescuentoLamparas = (totalLamparas * descuento) / 100; //total del porcentaje de descuento del total de lamparas
     totalConDescuento = totalLamparas - totalDescuentoLamparas; //total del descuento 
