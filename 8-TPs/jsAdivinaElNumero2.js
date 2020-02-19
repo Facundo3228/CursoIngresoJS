@@ -86,5 +86,8 @@ function verificar()
 		}
 	}
 	//asigno lo que tenga contadorIntentos a contadorIntentos.
-	contadorIntentos = contadorIntentos;	
+	contadorIntentos = contadorIntentos;
+	
+	//Nota personal: Adiferencia de la vercion anterior antes de enviar los mensajes debo mostrar
+	//el valor del contador, luego recuperarlo y compararlo con las posibilidades de cada mensaje.
 }
