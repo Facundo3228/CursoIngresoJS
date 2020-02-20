@@ -51,3 +51,7 @@ function verificar()
 	contadorIntentos = contadorIntentos;
 	document.getElementById("intentos").value = contadorIntentos;	
 }
+
+/**
+ * Nota personal rebisar en casa metodo contador.
+ */
