@@ -22,6 +22,7 @@ function comenzar()
 	//inicialiso variables
 	maximo = 101;
 	minimo = 1;
+	contadorIntentos = 0; //reinicio el contadorIntentos
 
 	//Genero el número RANDOM entre 1 y 100
 	numeroSecreto = parseInt(Math.random() * (maximo - minimo)) + minimo;
@@ -34,13 +35,13 @@ function verificar()
 {
 	//inicialiso variables
 	numeroIngresado = document.getElementById("numero").value;
-		
+	contadorIntentos++;
+
 	if (numeroIngresado == numeroSecreto) {
-		contadorIntentos++;
-		alert("Usted es un ganador!!! " + numeroSecreto + " y en solo " + contadorIntentos + " intentos.");
-		
+		//contadorIntentos++;
+		alert("Usted es un ganador!!! " + numeroSecreto + " y en solo " + contadorIntentos + " intentos.");	
 	} else {
-		contadorIntentos++;
+		//contadorIntentos++;
 		if (numeroSecreto < 50) {
 			alert("el numero se encuentra entre 1 y 49");
 		} else {
@@ -49,7 +50,7 @@ function verificar()
 	}
 	//asigno lo que tenga contadorIntentos a contadorIntentos.
 	contadorIntentos = contadorIntentos;
-	document.getElementById("intentos").value = contadorIntentos;	
+	document.getElementById("intentos").value = contadorIntentos;
 }
 
 /**

@@ -11,6 +11,11 @@ function mostrar()
 	var acumulador = 0;
 	var numero;
 
+	/**
+	 * Nota personal: Si validamos una secuencia de ingreso de numeros debemos hacer un parseInt
+	 * de la variable o parsearla al comienso y trabajar con la variable ya parseada.
+	 */
+
 	//while
 	while (contador < 5) {
 		contador++;
@@ -22,16 +27,18 @@ function mostrar()
 
 		//validar
 		while (isNaN(numero)) {
+
+			//ingreso de datos erroneos, pedimos otra ves el dato
 			numero = prompt("Error... Ingrese el numero " + contador);	
 			//parseInt a la variable numero
 			numero = parseFloat(numero);
 		}
 
-		acumulador += numero;
-		
+		//operacion de acumulacion (SUMA).
+		acumulador += numero;	
 	}
 
+	//muestro y resuelvo.
 	document.getElementById('suma').value = acumulador;
 	document.getElementById('promedio').value = acumulador / contador;
-
 }//FIN DE LA FUNCIÓN
