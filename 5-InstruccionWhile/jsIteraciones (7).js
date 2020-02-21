@@ -6,7 +6,7 @@
 
 function mostrar()
 {
-	//variables inicializadas
+	//variables inicializadas 
 	var contador = 0;
 	var acumulador = 0;
 	//var respuesta = "si"; //Si usamos el metodo confirm() la variable debe tomar el valor true.

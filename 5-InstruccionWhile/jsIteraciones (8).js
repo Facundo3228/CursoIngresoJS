@@ -6,8 +6,9 @@
 
 function mostrar()
 {
-	//variables inicializadas
+	//variables inicializadas 
 	var contador = 0;
+	var contadorNegativo = 0;
 	var positivo = 0; //acumulador positivos
 	var negativo = 1; //acumulado negativos
 	var numeroIngresado;
@@ -21,7 +22,7 @@ function mostrar()
 	
 	//while
 	while (respuesta) {
-		contador++;
+		contador++; //contador de veces
 
 		//le doy valor a la variable
 		numeroIngresado = prompt("Ingrese el numero " + contador);
@@ -37,8 +38,15 @@ function mostrar()
 			/**
 			 * Nota: Analizar...
 			 * 		 1: ¿Porque la multiplicacion da 1?
-			 * 		 2: ¿Es necesario crear una variable indistinta a la variable principal de ingreso
-			 * 			de datos parsearla en otra variable y controlar los datos con la variable ya parseada?
+			 * 		 Respuesta: Se debe al valor de la variable ya que nunca estoy
+			 * 					entrando al else.
+			 * 
+			 * 		 2: ¿Es necesario crear una variable indistinta a la
+			 * 			variable principal de ingreso de datos parsearla en
+			 * 			otra variable y controlar los datos con la variable
+			 * 			ya parseada?
+			 * 		 Respuesta: No es necesario.
+			 * 
 			 */
 
 			//parseInt a la variable numero
@@ -49,10 +57,16 @@ function mostrar()
 		if (numeroParseado >= 0) {
 			positivo += numeroParseado;
 		} else {
-			negativo = negativo * numeroParseado;
+			contadorNegativo++;
+			negativo *= numeroParseado;
 		}
 
 		respuesta = confirm("¿Desea continuar?");//con este metodo nuestra variable toma valores true o false.		
+	}
+
+	//valido si ingresa numeros negativos
+	if (contadorNegativo == 0) {
+		negativo = "No ingreso numeros";
 	}
 
 	//muestro los resultados

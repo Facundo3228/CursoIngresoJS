@@ -4,7 +4,7 @@
  * DESCENDENTES, desde el 10 al 1.
  */
 
-function mostrar()
+/* function mostrar()
 {
 	//variables
 	var contador;
@@ -17,4 +17,21 @@ function mostrar()
 		alert("Contador en: " + contador);
 		contador--;		
 	}
+}//FIN DE LA FUNCIÓN */
+
+function mostrar()
+{
+	//variables
+	var contador;
+
+	//inicio de variable
+	contador = 10;
+
+	//inicio del do/while
+	do {
+		alert("Contador en: " + contador);
+		contador--;	
+	}
+	while (contador > 0);
+			
 }//FIN DE LA FUNCIÓN
