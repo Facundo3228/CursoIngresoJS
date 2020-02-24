@@ -4,7 +4,7 @@
  * sumar los que son positivos y multiplicar los negativos.
  */
 
-function mostrar()
+/* function mostrar()
 {
 	//variables inicializadas 
 	var contador = 0;
@@ -20,7 +20,7 @@ function mostrar()
 	 * de la variable o parsearla al comienso y trabajar con la variable ya parseada.
 	 */
 	
-	//while
+	/* //while   <-------
 	while (respuesta) {
 		contador++; //contador de veces
 
@@ -49,9 +49,74 @@ function mostrar()
 			 * 
 			 */
 
-			//parseInt a la variable numero
+/* 			//parseInt a la variable numero  <----------
 			numeroParseado = parseInt(numeroIngresado);
 		}
+
+		//operacion de los valores ingresados
+		if (numeroParseado >= 0) {
+			positivo += numeroParseado;
+		} else {
+			contadorNegativo++;
+			negativo *= numeroParseado;
+		}
+
+		respuesta = confirm("¿Desea continuar?");//con este metodo nuestra variable toma valores true o false.		
+	}
+
+	//valido si ingresa numeros negativos
+	if (contadorNegativo == 0) {
+		negativo = "No ingreso numeros";
+	}
+
+	//muestro los resultados
+	document.getElementById('suma').value = positivo;
+	document.getElementById('producto').value = negativo;
+
+}//FIN DE LA FUNCIÓN */
+
+function mostrar()
+{
+	//variables inicializadas 
+	var contador = 0;
+	var contadorNegativo = 0;
+	var positivo = 0; //acumulador positivos
+	var negativo = 1; //acumulado negativos
+	var numeroIngresado;
+	var numeroParseado;
+	var respuesta = true;
+
+	/**
+	 * Nota personal: Si validamos una secuencia de ingreso de numeros debemos hacer un parseInt
+	 * de la variable o parsearla al comienso y trabajar con la variable ya parseada.
+	 */
+	
+	//while
+	while (respuesta) {
+		contador++; //contador de veces
+
+		//do/validar
+		do {
+			//le doy valor a la variable
+			numeroIngresado = prompt("Ingrese el numero " + contador);
+			//parseInt a la variable numero
+			numeroParseado = parseInt(numeroIngresado);
+
+		} while (isNaN(numeroParseado));
+
+			/**
+			 * Nota: Analizar...
+			 * 		 1: ¿Porque la multiplicacion da 1?
+			 * 		 Respuesta: Se debe al valor de la variable ya que nunca estoy
+			 * 					entrando al else.
+			 * 
+			 * 		 2: ¿Es necesario crear una variable indistinta a la
+			 * 			variable principal de ingreso de datos parsearla en
+			 * 			otra variable y controlar los datos con la variable
+			 * 			ya parseada?
+			 * 		 Respuesta: No es necesario.
+			 * 
+			 */
 
 		//operacion de los valores ingresados
 		if (numeroParseado >= 0) {

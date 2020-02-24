@@ -14,7 +14,7 @@ function mostrar()
      * Nota personal: El metodo .toLowerCase() inive las mayusculas y minusculas.
      */
 
-     //while
+     /* //while <-----
     while (clave.toLowerCase() != "utn750") {
         contador++;
 
@@ -33,8 +33,8 @@ function mostrar()
     } else {
         alert("Bienvenido");
     }
-}//FIN DE LA FUNCIÓN 
-*/
+}//FIN DE LA FUNCIÓN  */
+
 
 function mostrar()
 {
@@ -47,18 +47,25 @@ function mostrar()
      */
 
     //do/while
-    do {
-        contador++;
-        
+    do {  
         //si contador es igual a 3 termina el ciclo sin mostrar el resto del bloque de codigo.
         if (contador == 3) {
             break;
         }
 
+        contador++;
         //ingreso de dato
         clave = prompt("ingrese el número clave.");
-    }
-    while (clave.toLowerCase() != "utn750");
+
+    } while (clave.toLowerCase() != "utn750"); // error...
+
+    /**
+     * Nota personal: 1: ¿Por que sucede este error (Mostrar el error F12)?
+     *                Respuesta:
+     * 
+     *                2: ¿por que corta los intentos?
+     *                Respuesta:
+     */
 
     //Le informo al usuario el comportamiento del programa
     if (contador == 3) {
