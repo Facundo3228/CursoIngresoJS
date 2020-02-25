@@ -26,10 +26,10 @@ function mostrar()
 	var promedioPositivo;
 	var promedioNegativo;
 	var diferenciaPositNegat;
-	var respuesta = "si";
+	var respuesta = true;
 
 	//while remplaso: (respuesta.toLowerCase() != "no")
-	while(respuesta.toLowerCase != "no") {
+	while(respuesta) {
 		contador++;
 
 		//le doy valor a la variable
@@ -65,13 +65,15 @@ function mostrar()
 		if (numeroIngresado % 2 == 0) {
 			contadorPares++;
 		}
+
+		respuesta = confirm("¿Quiere continuar?");
 	
-		respuesta = prompt("¿Quiere continuar? si o no");
+		/* respuesta = prompt("¿Quiere continuar? si o no");
 
 		//validacion de respuesta si o no
 		while (respuesta.toLowerCase != "si" && respuesta.toLowerCase != "no") {
 			respuesta = prompt("Error... ¿Quiere continuar? SI o NO");			
-		}
+		} */
 	}
 
 	//operaciones y validaciones
