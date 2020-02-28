@@ -58,7 +58,7 @@ function mostrar()
             numeroIngresado = parseInt(numeroIngresado);
         } while (isNaN(numeroIngresado) || numeroIngresado < -100 || numeroIngresado > 100);
         
-        //f) El número y la letra del máximo y el mínimo.
+        //bandera
         if (bandera) {
             bandera = false;
             numeroMaximo = numeroIngresado; // 20  // 20  // 20 // 30 
@@ -66,12 +66,12 @@ function mostrar()
             letraMaximo = letraIngresada; // l  // l  // l  // k
             letraMinimo = letraIngresada; // l  // r  // g // g
         } else {
-            //????
+            //f) El número y la letra del máximo y el mínimo.    
             if (numeroIngresado > numeroMaximo) {
                 numeroMaximo = numeroIngresado;
                 letraMaximo = letraIngresada;
-            } else {
-                //¿Debo declarar la condicion?  <-----
+            } else if (numeroIngresado < numeroMinimo) {
+                //¿Debo declarar la condicion?  si...  <-----
                 numeroMinimo = numeroIngresado;
                 letraMinimo = letraIngresada;
             }
@@ -103,7 +103,7 @@ function mostrar()
     }
 
     //operatoria promedio y validacion
-    if (contadorNumeroPositivo > 0) {
+    if (contadorNumeroPositivo != 0) {
         promedio = acumuladorNumeroPositivo / contadorNumeroPositivo;        
     } else {
         mensaje = "¡¡¡ NO SE PUEDE DIVIDIR POR 0 !!! USTED NO INGRESO NINGUN NUMERO POSITIVO...";
@@ -117,6 +117,6 @@ function mostrar()
                    "d) El promedio de todos los números positivos ingresados." + promedio + "<br>" +
                    "e) La suma de todos los números negativos: " + acumuladorNumeroNegativos + "<br>" +
                    "f) El número y la letra del máximo y el mínimo: <br>" +
-                   "Letra y numero maximo: " + letraMaximo + "-" + numeroMaximo + "<br>" +
-                   "Letra y numero minimo: " + letraMinimo + "-" + numeroMinimo);
+                   "Letra y numero maximo: " + letraMaximo + " " + numeroMaximo + "<br>" +
+                   "Letra y numero minimo: " + letraMinimo + " " + numeroMinimo);
 }
