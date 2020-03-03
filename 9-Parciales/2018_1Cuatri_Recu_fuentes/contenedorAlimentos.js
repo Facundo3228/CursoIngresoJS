@@ -59,7 +59,7 @@ function mostrar()
 
         acumContenedor += kilosIngresados;
 
-        if (acumContenedor < 1000) {
+        if (acumContenedor <= 1000) {
 
             do {
                 marcaIngresada = prompt("Ingrese la marca: ");
