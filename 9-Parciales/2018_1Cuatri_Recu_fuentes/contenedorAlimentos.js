@@ -14,8 +14,7 @@ que marca tiene el mayor importe por bolsa de alimento
 el importe y la marca de la bolsa de alimento menos pesada.
  */
 
-function mostrar()
-{
+function mostrar() {
     //variables y inicio
     var marcaIngresada;
     var kilosIngresados;
@@ -28,7 +27,7 @@ function mostrar()
     //1 que marca tiene más kilos en el contenedor.
     var kilosMaximo;
     var marcaKiloMaximo;
-    
+
     //2 que marca tiene más bolsas de alimento en el contenedor.
     var bolsasMaximo;
     var marcaBolsasMaximo;
@@ -37,6 +36,7 @@ function mostrar()
     var importeMayor;
     var importeMarcaMayor;
     var importeBolsaMayor;
+    var totalInporteBolsaMayor;
 
     //4 el importe y la marca de la bolsa de alimento menos pesada.
     var kilosMenor;
@@ -52,13 +52,6 @@ function mostrar()
     while (respuesta) {
         //validacion y pedido de datos
 
-        do {
-            kilosIngresados = prompt("Ingrese los kilos: ");
-            kilosIngresados = parseInt(kilosIngresados);
-        } while (isNaN(kilosIngresados) || kilosIngresados > 1000);
-
-        acumContenedor += kilosIngresados;
-
         if (acumContenedor <= 1000) {
 
             do {
@@ -66,24 +59,31 @@ function mostrar()
             } while (! isNaN(marcaIngresada.toLowerCase()));
 
             do {
+                kilosIngresados = prompt("Ingrese los kilos: ");
+                kilosIngresados = parseInt(kilosIngresados);
+            } while (isNaN(kilosIngresados) || kilosIngresados < 1 || kilosIngresados > 1000);
+
+            do {
                 bolsasIngresada = prompt("Ingrese la cantidad de bolsas: ");
                 bolsasIngresada = parseInt(bolsasIngresada);
             } while (isNaN(bolsasIngresada));
-    
+
             do {
                 importeIngresado = prompt("Ingrese el importe: ");
-                importeIngresado = parseFloat(importeIngresado);
+                importeIngresado = parseInt(importeIngresado);
             } while (isNaN(importeIngresado));
+
+            acumContenedor += (kilosIngresados*bolsasIngresada);
 
         } else {
             alert("EL CONTENEDOR ESTA LLENO " + acumContenedor);
-        } 
+            break;
+        }
 
-        //1 que marca tiene más kilos en el contenedor.
-        //2 que marca tiene más bolsas de alimento en el contenedor.
-        //3 que marca tiene el mayor importe por bolsa de alimento.
-        //4 el importe y la marca de la bolsa de alimento menos pesada.
+        //bandera
         if (primeraIteracion) {
+            primeraIteracion = false;
+
             kilosMaximo = kilosIngresados;
             marcaKiloMaximo = marcaIngresada;
 
@@ -98,44 +98,43 @@ function mostrar()
             kilosImporteMenor = importeIngresado;
             kilosMarcaMenor = marcaIngresada;
             kilosBolsaMenor = bolsasIngresada;
-
-            primeraIteracion = false;
+            
         } else {
             //1 que marca tiene más kilos en el contenedor.
             if (kilosIngresados > kilosMaximo) {
                 kilosMaximo = kilosIngresados;
                 marcaKiloMaximo = marcaIngresada;
             } else {
-                //2 que marca tiene más bolsas de alimento en el contenedor.
-                if (bolsasIngresada > bolsasMaximo) {
-                    bolsasMaximo = bolsasIngresada;
-                    marcaBolsasMaximo = marcaIngresada;
-                } else {
-                    //3 que marca tiene el mayor importe por bolsa de alimento.
-                    if (importeIngresado > importeMayor) {
-                        importeMayor = importeIngresado;
-                        importeMarcaMayor = marcaIngresada;
-                        importeBolsaMayor = bolsasIngresada;
-                    } else {
-                        //4 el importe y la marca de la bolsa de alimento menos pesada.
-                        if (kilosIngresados < kilosMenor) {
-                            kilosMenor = kilosIngresados;
-                            kilosImporteMenor = importeIngresado;
-                            kilosMarcaMenor = marcaIngresada;
-                            kilosBolsaMenor = bolsasIngresada;  
-                        }
-                    }
-                }
+                //4 el importe y la marca de la bolsa de alimento menos pesada.
+                if (kilosIngresados < kilosMenor) {
+                    kilosMenor = kilosIngresados;
+                    kilosImporteMenor = importeIngresado;
+                    kilosMarcaMenor = marcaIngresada;
+                    kilosBolsaMenor = bolsasIngresada;
+            } 
+            }
+            //2 que marca tiene más bolsas de alimento en el contenedor.
+            if (bolsasIngresada > bolsasMaximo) {
+                bolsasMaximo = bolsasIngresada;
+                marcaBolsasMaximo = marcaIngresada;
+            }
+            //3 que marca tiene el mayor importe por bolsa de alimento.
+            if (importeIngresado > importeMayor) {
+                importeMayor = importeIngresado;
+                importeMarcaMayor = marcaIngresada;
+                importeBolsaMayor = bolsasIngresada;
+                totalInporteBolsaMayor = importeBolsaMayor * importeMayor;
             }
         }
-        
+
         respuesta = confirm("¡¡¡DESEA CONTINUAR!!!");
+
     }
-  
+
     document.write("1 La marca: " + marcaKiloMaximo + " tiene más kilos en el contenedor, sus kilos son: " + kilosMaximo + "<br>");
     document.write("2 La marca: " + marcaBolsasMaximo + " tiene más bolsas de alimento en el contenedor, la cantidad de bolsas son: " + bolsasMaximo + "<br>");
-    document.write("3 La marca mayor: " + importeMarcaMayor + " y su importe mayor es: " + importeMayor + " por bolsa de alimento es: " + importeBolsaMayor + "<br>");
+    document.write("3 La marca mayor: " + importeMarcaMayor + " y su importe mayor es: $" + importeMayor + " la cantidad de bolsas es: " + importeBolsaMayor + " y su importe por bolsa de alimento en total es: $" + totalInporteBolsaMayor + "<br>");
     document.write("4 El importe es: " + kilosImporteMenor + " y la marca es: " + kilosMarcaMenor + " de las: " + kilosBolsaMenor + " bolsa de alimento menos pesada: " + kilosMenor);
-
-
+    document.write("El peso total del contenedor es: " + acumContenedor + "<br>");
+   
 }

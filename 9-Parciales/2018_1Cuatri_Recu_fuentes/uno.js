@@ -1,153 +1,213 @@
-/**
- * b)Para la gestión de un hotel,
-ingresar los siguientes datos validados de una reserva
-nombre del huésped
-cantidad de personas 
-cantidad de dia de estadia 
-forma de pago(efectivo , tarjeta o QR)
-
-1 informar el huésped que trajo más personas en una sola reserva.
-2 la cantidad de personas que se quedaron más días
-3 la forma de pago más utilizada.
-4 el promedio de cantidad de días por reserva
- */
-
 function mostrar()
 {
     //variables y inicio
-    var huespedIngresado;
-    var personasIngresado;
-    var diasIngresados;
-    var formaPagoIngresados;
+    var autosIngresada;
+    var vendedorIngresado;
+    var marcaIngresada;
+    var patenteIngresada;
+    var letraIngresada;
+    var colorIngresado;
+    var precioIngresado;
+    var pagoIngresado;
 
-    //variables de desarrollo
-    var contadordias = 0; // punto 2
+    //variable de operacion
+    var acumCantidadAutos = 0;
+    var contaAutomotora = 0;
 
-    //1 informar el huésped que trajo más personas en una sola reserva.
-    var huespedMayor; //<----
-    var personasMayor; //<----
-    
-    //2 la cantidad de personas que se quedaron más días
-    var diasMayor; //<----
-    var personasDias; //<----
-    var huespedDias; //<----
+    //promedio de autos variables de operacion
+    var contadorAutos = 0;
+    var promedioAutos;
 
-    //3 la forma de pago más utilizada.
-    var formaPagoMayor; //<----
-    var contadorEfectivo = 0; //<----
-    var contadortarjeta = 0; //<----
-    var contadorQR = 0; //<----
+    //nonbre del vendedor que tiene menos cantidad de autos
+    var autoCantidadMenor;
+    var vendedorAutoCantMenor;
 
-    //4 el promedio de cantidad de días por reserva
-    var contadorDiasIngresados = 0; //<----
-    var acumuladorDias = 0; //<----
-    var promedioDias; //<----
+    //el auto de color rojo con precio mas alto
+    var precioColorRojoAlto;
+    var autoPrecioColorRojoAlto;
+
+    //marca y patente del auto con precio mas alto y bajo
+    var precioAutoAlto;
+    var precioMarcaAutoAlto;
+    var precioPatenteAutoAlto;
+    var precioLetraAutoAlto;
+
+    var precioAutoBajo;
+    var precioMarcaAutoBajo;
+    var precioPatenteAutoBajo;
+    var precioLetraAutoBajo;
+
+    //la forma de pago mas usada
+    var formaPago;
+    var contadorEfectivo = 0;
+    var contadorCheque = 0;
+    var contadorTarjeta = 0;
+        
 
     //variables de control
     var respuesta = true;
     var primeraIteracion = true;
-    //var mensaje;
+    var mensaje;
 
 
     while (respuesta) {
 
         //validacion y pedido de datos
+        if (contaAutomotora < 10) {
+            contaAutomotora++;
 
-        do {
-            huespedIngresado = prompt("Ingrese el nombre del huésped: ");
-        } while (! isNaN(huespedIngresado.toLowerCase()));
-
-        do {
-            personasIngresado = prompt("Ingrese la cantidad de personas: ");
-            personasIngresado = parseInt(personasIngresado);
-        } while (isNaN(personasIngresado));
-
-        do {
-            diasIngresados = prompt("Ingrese la cantidad de dias de estadia: ");
-            diasIngresados = parseInt(diasIngresados);
-        } while (isNaN(diasIngresados));
-
-        contadorDiasIngresados++; //parte 4
-
-        do {
-            formaPagoIngresados = prompt("Ingrese una de las 3 formas de pago validas EFECTIVO, TARJETA O QR: ");
-        } while (formaPagoIngresados.toLowerCase() != "efectivo" && formaPagoIngresados.toLowerCase() != "tarjeta" && formaPagoIngresados.toLowerCase() != "qr");
-
-        //1 informar el huésped que trajo más personas en una sola reserva.
-        //2 la cantidad de personas que se quedaron más días
-        //3 la forma de pago más utilizada.
-        if(primeraIteracion) {
-            huespedMayor = huespedIngresado;
-            personasMayor = personasIngresado;
-
-            diasMayor = diasIngresados;
-            personasDias = personasIngresado;
-            huespedDias = huespedIngresado;
-
-            primeraIteracion = false;
-        } else {
-            //1 informar el huésped que trajo más personas en una sola reserva.
-            if (personasIngresado > personasMayor) {
-                personasMayor = personasIngresado;
-                huespedMayor = huespedIngresado;
+            do {
+                autosIngresada = prompt("Ingrese la cantidad de autos (Maximo 100): ");
+                autosIngresada = parseInt(autosIngresada);
+            } while (isNaN(autosIngresada) || autosIngresada < 0 || autosIngresada > 50);
+    
+            acumCantidadAutos += autosIngresada;
+            contadorAutos++;
+    
+            if (acumCantidadAutos <= 50) {
+                do {
+                    vendedorIngresado = prompt("Nombre del vendedor: ");       
+                } while (! isNaN(vendedorIngresado.toLowerCase()));
+    
+                do {
+                    marcaIngresada = prompt("Ingrese la marca del automovil:");
+                } while (! isNaN(marcaIngresada.toLowerCase()));
+    
+                do {
+                    patenteIngresada = prompt("Ingrese la patente numerica de 4 digitos: ");
+                    patenteIngresada =parseInt(patenteIngresada);
+                } while (isNaN(patenteIngresada) || patenteIngresada < 1000 || patenteIngresada > 9999);
+    
+                do {
+                    letraIngresada = prompt("Ingrese la letra de la patente 2 letras: ");
+                } while ((! isNaN(letraIngresada.toUpperCase())) || letraIngresada.toUpperCase().length-1 != 1);
+    
+                do {
+                    colorIngresado = prompt("Ingrese color del auto: ");
+                } while (! isNaN(colorIngresado.toLowerCase()));
+    
+                do {
+                    precioIngresado = prompt("Valor del auto: ");
+                    precioIngresado = parseFloat(precioIngresado);
+                } while (isNaN(precioIngresado));
+    
+                do {
+                    pagoIngresado = prompt("Ingrese la forma de pago (EFECTIVO, CHEQUE O TRANSFERENCIA): ");
+                } while (pagoIngresado.toUpperCase() != "EFECTIVO" && pagoIngresado.toUpperCase() != "CHEQUE" && pagoIngresado.toUpperCase() != "TRANSFERENCIA");
                 
             } else {
-                //2 la cantidad de personas que se quedaron más días
-                if (diasIngresados > diasMayor) {
-                    diasMayor = diasIngresados;
-                    personasDias = personasIngresado;
-                    huespedDias = huespedIngresado;
-                    contadordias++; 
+                mensaje = "EL VENDEDOR " + vendedorIngresado + "TIENE EL MAXIMO DE AUTOS PERMITIDOS";
+                alert(mensaje);
+            }
+    
+            //bandera
+            if (primeraIteracion) {
+                autoCantidadMenor = autosIngresada;
+                vendedorAutoCantMenor = vendedorIngresado;
+                
+                precioColorRojoAlto = precioIngresado;
+                autoPrecioColorRojoAlto = colorIngresado;
+    
+                precioAutoAlto = precioIngresado;
+                precioMarcaAutoAlto = marcaIngresada;
+                precioPatenteAutoAlto = patenteIngresada;
+                precioLetraAutoAlto = letraIngresada;
+
+                precioAutoBajo = precioIngresado;
+                precioMarcaAutoBajo = marcaIngresada;
+                precioPatenteAutoBajo = patenteIngresada;
+                precioLetraAutoBajo = letraIngresada;
+    
+                primeraIteracion = false;
+            } else {
+                //nonbre del vendedor que tiene menos cantidad de autos
+                if (autosIngresada < autoCantidadMenor) {
+                    autoCantidadMenor = autosIngresada;
+                    vendedorAutoCantMenor = vendedorIngresado;
+                } else {
+                    //el auto de color rojo con precio mas alto
+                    if (precioIngresado > precioColorRojoAlto && autoPrecioColorRojoAlto === "rojo") {
+                        precioColorRojoAlto = precioIngresado;
+                        autoPrecioColorRojoAlto = colorIngresado;                        
+                    } else {
+                        //marca y patente del auto con precio mas alto y bajo
+                        if (precioIngresado > precioAutoAlto) {
+                            precioAutoAlto = precioIngresado;
+                            precioMarcaAutoAlto = marcaIngresada;
+                            precioPatenteAutoAlto = patenteIngresada;
+                            precioLetraAutoAlto = letraIngresada;
+                        } else {
+                            //marca y patente del auto con precio mas alto y bajo
+                            if (precioIngresado < precioMarcaAutoBajo) {
+                                precioAutoBajo = precioIngresado;
+                                precioMarcaAutoBajo = marcaIngresada;
+                                precioPatenteAutoBajo = patenteIngresada;
+                                precioLetraAutoBajo = letraIngresada;
+                            }
+                        }
+                    }
                 }
             }
+        } else {
+            mensaje = "EL AUTOMOTOR NO SOPORTA MAS AUTOS";
+            alert(mensaje + " " + contaAutomotora);
         }
 
-        //3 la forma de pago más utilizada.
-        switch (formaPagoIngresados) {
-            case "efectivo":
+        //la forma de pago mas usada
+        switch(pagoIngresado.toUpperCase()) {
+            case "EFECTIVO":
                 contadorEfectivo++;
-                formaPagoMayor = formaPagoIngresados;
+                formaPago.toLowerCase() = pagoIngresado;
                 break;
-            case "tarjeta":
-                contadortarjeta++;
-                formaPagoMayor = formaPagoIngresados;
+            case "CHEQUE":
+                contadorCheque++;
+                formaPago.toLowerCase() = pagoIngresado;
                 break;
-            case "qr":
-                contadorQR++;
-                formaPagoMayor = formaPagoIngresados;
+            case "TARJETA":
+                contadorTarjeta++;
+                formaPago.toLowerCase() = pagoIngresado;
                 break;
             default:
-                formaPagoMayor = "NO ES UNA FORMA DE PAGO VALIDA"
+                mensaje = "NO ES UNA FORMA DE PAGO VALIDA";
+                alert(mensaje);
                 break;
-        }        
-
-        //parte 4
-        acumuladorDias += diasIngresados; 
-
+        }
+        
         respuesta = confirm("¿DESEA CONTINUAR?");
     }
 
-    //parte 3 la forma de pago más utilizada.
-    if (contadorEfectivo > contadortarjeta && contadorEfectivo > contadorQR) {
-        formaPagoMayor = "efectivo";
+    //promedio de autos
+    if (contadorAutos != 0) {
+        promedioAutos = acumCantidadAutos / contadorAutos;
     } else {
-        if (contadortarjeta > contadorQR) {
-            formaPagoMayor = "tarjeta";
-        } else {
-            formaPagoMayor = "QR";
-        }
+        promedioAutos = "NO SE PUEDE DIVIDIR POR CERO";
     }
 
-    //4 el promedio de cantidad de días por reserva
-    if (contadorDiasIngresados != 0) {
-        promedioDias = acumuladorDias / contadorDiasIngresados;
+    //la forma de pago mas usada
+    if (contadorEfectivo > contadorCheque && contadorEfectivo > contadorTarjeta) {
+        formaPago = "EFECTIVO";
+    } else if (contadorCheque > contadorTarjeta) {
+        formaPago = "CHEQUE";
     } else {
-        promedioDias = "¡¡¡NO SE PUEDE DIVIDIR POR CERO!!!";
+        formaPago = "TARJETA";
     }
-    
-    //muestro
-    document.write("1 El huésped: " + huespedMayor + " que trajo más personas en una sola reserva es: " + personasMayor + "<br>");
-    document.write("2 Solo hay: " + contadordias + " huesped que ingreso: " + personasDias + " personas, que se quedaron: " + diasMayor + " dias, su nombre es: " + huespedDias + "<br>");
-    document.write("3 La forma de pago más utilizada es:" + formaPagoMayor + "<br>");
-    document.write("4 el promedio de cantidad de días por reserva es: " + acumuladorDias + "/" + contadorDiasIngresados + "=" + promedioDias);
+
+    //la forma de pago menos usada
+    if (contadorEfectivo < contadorCheque && contadorEfectivo < contadorTarjeta) {
+        formaPago = "EFECTIVO";
+    } else if (contadorCheque < contadorTarjeta) {
+        formaPago = "CHEQUE";
+    } else {
+        formaPago = "TARJETA";
+    }
+
+    //informe
+    document.write("El promedio de los autos es: " + acumCantidadAutos + "/" + contadorAutos + "=" + promedioAutos + "<br>");
+    document.write("El vendedor " + vendedorAutoCantMenor + " tiene " + autoCantidadMenor + " autos solamente" + "<br>");
+    document.write("El auto de color " + autoPrecioColorRojoAlto + " con precio mas alto es " + precioColorRojoAlto + "<br>");
+    document.write("El auto de marca " + precioMarcaAutoAlto +" y patente " + precioPatenteAutoAlto + precioLetraAutoAlto + " del auto con precio mas alto es: " + precioAutoAlto + "<br>");
+    document.write("El auto de marca " + precioMarcaAutoBajo +" y patente " + precioPatenteAutoBajo + precioLetraAutoBajo + " del auto con precio mas bajo es: " + precioAutoBajo + "<br>");
+    document.write("La forma de pago mas usada es: " + formaPago + "<br>");
+    document.write("La forma de pago menos usada es:" + formaPago);
+
 }

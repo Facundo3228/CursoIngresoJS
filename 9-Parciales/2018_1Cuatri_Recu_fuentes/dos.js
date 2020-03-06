@@ -1,141 +1,137 @@
 /**
-c)Se pide la carga de datos de un contenedor  de alimento canino con un máximo de carga de 1000kg,
-cargar hasta que el cliente quiera o se llene el contenedor.
-se pide:
+En el ingreso a un viaje en crucero se nos solicita, nombre, edad (mayores de 18), sexo ("f" o "m") y
+estado civil ("soltero", "casado" o "viudo");
 
-marca
-kilos por bolsa
-cantidad de bolsa
-importe por bolsa
-
-que marca tiene más kilos en el contenedor
-que marca tiene más bolsas de alimento en el contenedor
-que marca tiene el mayor importe por bolsa de alimento
-el importe y la marca de la bolsa de alimento menos pesada.
+a) El nombre del hombre casado mas joven.
+b) El sexo y nombre del pasajero/a mas viejo.
+c) La cantidad de mujeres que hay casdas o viudas.
+d) El promedio de edad entre las mujeres.
+e) El promedio de edad entre las hombres solteros.
  */
 
 function mostrar()
 {
-    //variables y inicio
-    var marcaIngresada;
-    var kilosIngresados;
-    var bolsasIngresada;
-    var importeIngresado;
+    //variables de inicio
+    var nombreIngresado;
+    var edadIngresada;
+    var sexoIngresado;
+    var estadoCivilIngresado;
 
-    //variables de desarrollo
-    var acumContenedor = 0;
+    //a) El nombre del hombre casado mas joven.
+    var edadMasJoven;
+    var edadSexoMasJoven;
+    var edadNombreMasJoven;
+    var edadCasadoMasJoven;
 
-    //1 que marca tiene más kilos en el contenedor.
-    var kilosMaximo;
-    var marcaKiloMaximo;
-    
-    //2 que marca tiene más bolsas de alimento en el contenedor.
-    var bolsasMaximo;
-    var marcaBolsasMaximo;
+    //b) El sexo y nombre del pasajero/a mas viejo.
+    var edadMasViejo;
+    var edadSexoMasViejo;
+    var edadNombreMasViejo;
+    var edadCasadoMasViejo;
 
-    //3 que marca tiene el mayor importe por bolsa de alimento.
-    var importeMayor;
-    var importeMarcaMayor;
-    var importeBolsaMayor;
+    //c) La cantidad de mujeres que hay casdas o viudas.
+    var contaMujerCasadaViuda = 0;
 
-    //4 el importe y la marca de la bolsa de alimento menos pesada.
-    var kilosMenor;
-    var kilosImporteMenor;
-    var kilosMarcaMenor;
-    var kilosBolsaMenor;
+    //d) El promedio de edad entre las mujeres.
+    var contaMujer = 0;
+    var acumMujeres = 0;
+    var promedioMujeres;
+
+    //e) El promedio de edad entre las hombres solteros.
+    var contaHombreSoltero = 0;
+    var acumHombreSoltero = 0;
+    var promedioHombreSoltero;
 
     //variables de control
     var respuesta = true;
-    var primeraIteracion = true;
-    //var mensaje;
+    var bandera = true;
 
     while (respuesta) {
-        //validacion y pedido de datos
+        //validaciones
+        do {
+            nombreIngresado = prompt("Ingrese el nombre");
+        } while (! isNaN(nombreIngresado.toLowerCase()));
 
         do {
-            kilosIngresados = prompt("Ingrese los kilos: ");
-            kilosIngresados = parseInt(kilosIngresados);
-        } while (isNaN(kilosIngresados) || kilosIngresados > 1000);
+            edadIngresada = prompt("Ingrese la edad");
+            edadIngresada = parseInt(edadIngresada);
+        } while (isNaN(edadIngresada) || edadIngresada < 18);
 
-        acumContenedor += kilosIngresados;
+        do {
+            sexoIngresado = prompt("Ingrese el sexo f / m");
+        } while (sexoIngresado.toLowerCase() != "f" && sexoIngresado.toLowerCase() != "m");
 
-        if (acumContenedor < 1000) {
+        do {
+            estadoCivilIngresado = prompt("Ingrese el estado civil Soltero, Casado o Viudo");
+        } while (estadoCivilIngresado.toLowerCase() != "soltero" && estadoCivilIngresado.toLowerCase() != "casado" && estadoCivilIngresado.toLowerCase() != "viudo");
 
-            do {
-                marcaIngresada = prompt("Ingrese la marca: ");
-            } while (! isNaN(marcaIngresada.toLowerCase()));
+        //bandera
+        if (bandera) {
+            edadMasJoven = edadIngresada;
+            edadSexoMasJoven = sexoIngresado;
+            edadNombreMasJoven = nombreIngresado;
+            edadCasadoMasJoven = estadoCivilIngresado;
 
-            do {
-                bolsasIngresada = prompt("Ingrese la cantidad de bolsas: ");
-                bolsasIngresada = parseInt(bolsasIngresada);
-            } while (isNaN(bolsasIngresada));
-    
-            do {
-                importeIngresado = prompt("Ingrese el importe: ");
-                importeIngresado = parseFloat(importeIngresado);
-            } while (isNaN(importeIngresado));
+            edadMasViejo = edadIngresada;
+            edadSexoMasViejo = sexoIngresado;
+            edadNombreMasViejo = nombreIngresado;
+            edadCasadoMasViejo = estadoCivilIngresado;
 
+            bandera = false;
         } else {
-            alert("EL CONTENEDOR ESTA LLENO " + acumContenedor);
-        } 
-
-        //1 que marca tiene más kilos en el contenedor.
-        //2 que marca tiene más bolsas de alimento en el contenedor.
-        //3 que marca tiene el mayor importe por bolsa de alimento.
-        //4 el importe y la marca de la bolsa de alimento menos pesada.
-        if (primeraIteracion) {
-            kilosMaximo = kilosIngresados;
-            marcaKiloMaximo = marcaIngresada;
-
-            bolsasMaximo = bolsasIngresada;
-            marcaBolsasMaximo = marcaIngresada;
-
-            importeMayor = importeIngresado;
-            importeMarcaMayor = marcaIngresada;
-            importeBolsaMayor = bolsasIngresada;
-
-            kilosMenor = kilosIngresados;
-            kilosImporteMenor = importeIngresado;
-            kilosMarcaMenor = marcaIngresada;
-            kilosBolsaMenor = bolsasIngresada;
-
-            primeraIteracion = false;
-        } else {
-            //1 que marca tiene más kilos en el contenedor.
-            if (kilosIngresados > kilosMaximo) {
-                kilosMaximo = kilosIngresados;
-                marcaKiloMaximo = marcaIngresada;
+            //a) El nombre del hombre casado mas joven.
+            if (edadIngresada < edadMasJoven && sexoIngresado == "m") {
+                edadMasJoven = edadIngresada;
+                edadSexoMasJoven = sexoIngresado;
+                edadNombreMasJoven = nombreIngresado;
+                edadCasadoMasJoven = estadoCivilIngresado;
             } else {
-                //2 que marca tiene más bolsas de alimento en el contenedor.
-                if (bolsasIngresada > bolsasMaximo) {
-                    bolsasMaximo = bolsasIngresada;
-                    marcaBolsasMaximo = marcaIngresada;
-                } else {
-                    //3 que marca tiene el mayor importe por bolsa de alimento.
-                    if (importeIngresado > importeMayor) {
-                        importeMayor = importeIngresado;
-                        importeMarcaMayor = marcaIngresada;
-                        importeBolsaMayor = bolsasIngresada;
-                    } else {
-                        //4 el importe y la marca de la bolsa de alimento menos pesada.
-                        if (kilosIngresados < kilosMenor) {
-                            kilosMenor = kilosIngresados;
-                            kilosImporteMenor = importeIngresado;
-                            kilosMarcaMenor = marcaIngresada;
-                            kilosBolsaMenor = bolsasIngresada;  
-                        }
-                    }
+                //b) El sexo y nombre del pasajero/a mas viejo.
+                if (edadIngresada > edadMasViejo) {
+                    edadMasViejo = edadIngresada;
+                    edadSexoMasViejo = sexoIngresado;
+                    edadNombreMasViejo = nombreIngresado;
+                    edadCasadoMasViejo = estadoCivilIngresado;
                 }
             }
         }
-        
-        respuesta = confirm("¡¡¡DESEA CONTINUAR!!!");
+        //c) La cantidad de mujeres que hay casdas o viudas.
+        if (sexoIngresado == "f" && (estadoCivilIngresado == "casado" || estadoCivilIngresado == "viudo")) {
+            contaMujerCasadaViuda++;
+        }
+        //d) El promedio de edad entre las mujeres.
+        if (sexoIngresado == "f") {
+            contaMujer++;
+            acumMujeres += edadIngresada;
+        }
+        //e) El promedio de edad entre las hombres solteros.
+        if (sexoIngresado == "m" && estadoCivilIngresado == "soltero") {
+            contaHombreSoltero++;
+            acumHombreSoltero += edadIngresada;
+        }
+
+        respuesta = confirm("DESEA CONTUNUAR");
     }
-  
-    document.write("1 La marca: " + marcaKiloMaximo + " tiene más kilos en el contenedor, sus kilos son: " + kilosMaximo + "<br>");
-    document.write("2 La marca: " + marcaBolsasMaximo + " tiene más bolsas de alimento en el contenedor, la cantidad de bolsas son: " + bolsasMaximo + "<br>");
-    document.write("3 La marca mayor: " + importeMarcaMayor + " y su importe mayor es: " + importeMayor + " por bolsa de alimento es: " + importeBolsaMayor + "<br>");
-    document.write("4 El importe es: " + kilosImporteMenor + " y la marca es: " + kilosMarcaMenor + " de las: " + kilosBolsaMenor + " bolsa de alimento menos pesada: " + kilosMenor);
 
+    //promedo d
+    if (contaMujer != 0) {
+        promedioMujeres = acumMujeres / contaMujer;
+    } else {
+        promedioMujeres = "NO SE PUEDE DIVIDIR POR CERO";        
+    }
 
+    //promedio e
+    if (contaHombreSoltero != 0) {
+        promedioHombreSoltero = acumHombreSoltero / contaHombreSoltero;
+    } else {
+        promedioHombreSoltero = "NO SE PUEDE DIVIDIR POR CERO";        
+    }
+
+    //muestro
+    document.write("a) El nombre del hombre casado mas joven." + edadNombreMasJoven + "<br>");
+    document.write("b) El sexo y nombre del pasajero/a mas viejo. El sexo es: " + edadSexoMasViejo + " Su nombre es: " + edadNombreMasViejo + "<br>");
+    document.write("c) La cantidad de mujeres que hay casdas o viudas." + contaMujerCasadaViuda +"<br>");
+    document.write("d) El promedio de edad entre las mujeres." + acumMujeres + "/" + contaMujer + "=" + promedioMujeres + "<br>");
+    document.write("e) El promedio de edad entre las hombres solteros." + acumHombreSoltero + "/" + contaHombreSoltero + "=" + promedioHombreSoltero + "<br>");
+    document.write("FIN DEL INFORME");
 }
